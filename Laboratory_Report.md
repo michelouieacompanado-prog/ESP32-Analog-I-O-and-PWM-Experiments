@@ -120,3 +120,7 @@ To generate true analog voltage steps using the ESP32's internal 8-bit DAC on **
   1. **At Code 0:** The observed voltage was $0.14\text{ V}$ ($+140\text{ mV}$ error). The internal DAC output buffer driver cannot pull completely down to $0.00\text{ V}$.
   2. **Mid-Range (Codes 64–192):** Output tracked linear predictions closely with minimal deviation ($0.00\text{ V to } -0.08\text{ V}$ offset).
   3. **At Code 255:** The observed voltage saturated at $3.14\text{ V}$ (a $-0.16\text{ V}$ error), showing that the internal output amplifier saturates approximately $160\text{ mV}$ below the physical $3.3\text{ V}$ supply rail.
+
+### Technical Note: PWM vs. True DAC Output
+* **Pulse Width Modulation (PWM):** Generates a high-frequency digital square wave switching rapidly between $0\text{ V}$ and $3.3\text{ V}$. It simulates an analog voltage by varying the duty cycle.
+* **Digital-to-Analog Converter (DAC):** Uses an internal R-2R resistor ladder and output buffer to generate a steady, true analog DC voltage level on the output pin without digital switching.
